@@ -1,0 +1,122 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| conntest           |
+| conntest1          |
+| dhatri             |
+| jeet               |
+| kena               |
+| krina              |
+| library            |
+| mysql              |
+| neww               |
+| performance_schema |
+| studentinfo        |
+| sys                |
+| yatri              |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> use studentinfo;
+Database changed
+mysql> describe info;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | NO   |     | NULL    |                |
+| email | varchar(50) | NO   | UNI | NULL    |                |
+| age   | int(3)      | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select *from info;
++----+---------+-----------------+------+
+| id | name    | email           | age  |
++----+---------+-----------------+------+
+|  1 | MOHIT   | mohit@gmail.com | NULL |
+|  2 | RAKESH  | raku@gmail.com  |   28 |
+|  3 | mayank  | megi@gmail.com  |   18 |
+|  4 | suresh  | suru@gmail.com  |   22 |
+|  5 | kamlesh | kamu@gmail.com  |   25 |
++----+---------+-----------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select *from info WHERE name="mohit";
++----+-------+-----------------+------+
+| id | name  | email           | age  |
++----+-------+-----------------+------+
+|  1 | MOHIT | mohit@gmail.com | NULL |
++----+-------+-----------------+------+
+1 row in set (0.01 sec)
+
+mysql> select *from info Where age>=18;
++----+---------+----------------+------+
+| id | name    | email          | age  |
++----+---------+----------------+------+
+|  2 | RAKESH  | raku@gmail.com |   28 |
+|  3 | mayank  | megi@gmail.com |   18 |
+|  4 | suresh  | suru@gmail.com |   22 |
+|  5 | kamlesh | kamu@gmail.com |   25 |
++----+---------+----------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select *frrom info order by age;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'frrom info order by age' at line 1
+mysql> select *from info order by age;
++----+---------+-----------------+------+
+| id | name    | email           | age  |
++----+---------+-----------------+------+
+|  1 | MOHIT   | mohit@gmail.com | NULL |
+|  3 | mayank  | megi@gmail.com  |   18 |
+|  4 | suresh  | suru@gmail.com  |   22 |
+|  5 | kamlesh | kamu@gmail.com  |   25 |
+|  2 | RAKESH  | raku@gmail.com  |   28 |
++----+---------+-----------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select *from info REGEXP "^h$";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REGEXP "^h$"' at line 1
+mysql> select *FROM INFO REGEXP "h*";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REGEXP "h*"' at line 1
+mysql> select *FROM INFO REGEXP ".h";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REGEXP ".h"' at line 1
+mysql> select *FROM INFO REGEXP [h*];
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REGEXP [h*]' at line 1
+mysql> select *from info regexp '.h';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'regexp '.h'' at line 1
+mysql> select *from info where name regexp ".h";
++----+---------+-----------------+------+
+| id | name    | email           | age  |
++----+---------+-----------------+------+
+|  1 | MOHIT   | mohit@gmail.com | NULL |
+|  2 | RAKESH  | raku@gmail.com  |   28 |
+|  4 | suresh  | suru@gmail.com  |   22 |
+|  5 | kamlesh | kamu@gmail.com  |   25 |
++----+---------+-----------------+------+
+4 rows in set (0.00 sec)
+
+mysql> update info set age=28 where id=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select  *from info;
++----+---------+-----------------+------+
+| id | name    | email           | age  |
++----+---------+-----------------+------+
+|  1 | MOHIT   | mohit@gmail.com |   28 |
+|  2 | RAKESH  | raku@gmail.com  |   28 |
+|  3 | mayank  | megi@gmail.com  |   18 |
+|  4 | suresh  | suru@gmail.com  |   22 |
+|  5 | kamlesh | kamu@gmail.com  |   25 |
++----+---------+-----------------+------+
+5 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+
